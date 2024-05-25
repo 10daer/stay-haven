@@ -52,7 +52,7 @@ function App() {
               <Route path="users" element={<Users />} />
               <Route path="account" element={<Account />} />
             </Route>
-            <Route path="*" element={<PageNotFound />} />
+            {/* <Route path="*" element={<PageNotFound />} /> */}
             <Route path="login" element={<Login />} />
           </Routes>
         </BrowserRouter>
