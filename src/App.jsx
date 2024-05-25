@@ -36,6 +36,7 @@ function App() {
         )}
         <GlobalStyle />
         <BrowserRouter>
+          {console.log(window.location.href)}
           <Routes>
             <Route element={<AppLayout />}>
               <Route index element={<Navigate replace to="dashboard" />} />
