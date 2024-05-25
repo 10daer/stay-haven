@@ -8,7 +8,10 @@ function GlobalProvider({ children }) {
     window.matchMedia("(prefers-color-scheme: dark)").matches,
     "colour-mode"
   );
-  const [redirectUrl, setRedirectUrl] = useLocalStorageState("", "RedirectUrl");
+  const [redirectUrl, setRedirectUrl] = useLocalStorageState(
+    "/",
+    "RedirectUrl"
+  );
 
   useEffect(() => {
     document.documentElement.classList = [];
