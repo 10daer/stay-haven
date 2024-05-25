@@ -23,7 +23,7 @@ function ProtectedRoute({ children }) {
   useEffect(() => {
     if (!isPending && !isAuthenticated) {
       const clientUrlPath = location.pathname + location.search;
-      console.log(clientUrlPath);
+      console.log(location, clientUrlPath);
       setRedirectUrl(clientUrlPath);
       navigate("/login");
       toast.error("Please signin to access the page");
