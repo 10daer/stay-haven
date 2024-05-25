@@ -38,12 +38,13 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<AppLayout />}>
-              <Route index element={<Navigate replace to="/dashboard" />} />
+              <Route index element={<Navigate replace={true} to="/dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="settings" element={<Settings />} />
-              <Route path="bookings" element={<Bookings />} />
+              <Route path="bookings" element={<Bookings />} >
+                <Route path=":bookingId" element={<Booking />} />
+              </Route>
               <Route path="create-booking" element={<CreateBooking />} />
-              <Route path="bookings/:bookingId" element={<Booking />} />
               <Route path="check-in/:bookingId" element={<Checkin />} />
               <Route path="cabins" element={<Cabins />} />
               <Route path="users" element={<Users />} />
