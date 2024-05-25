@@ -26,8 +26,8 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-  console.log(window.location.href)
   return (
+    {console.log(window.location.href)}
     <GlobalProvider>
       <QueryClientProvider client={queryClient}>
         {import.meta.env.DEV ? (
