@@ -38,7 +38,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             {console.log(Routes)}
-            <Route element={<AppLayout />}>
+            <Route path="/" element={<AppLayout />}>
               {console.log(Route)}
               <Route index element={<Navigate replace to="dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
