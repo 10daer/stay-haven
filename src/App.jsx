@@ -37,6 +37,7 @@ function App() {
         <GlobalStyle />
         <BrowserRouter>
           <Routes>
+<<<<<<< HEAD
             <Route path="/" element={<AppLayout />}>
               <Route
                 index
@@ -52,6 +53,20 @@ function App() {
               <Route path="cabins" element={<Cabins />} />
               <Route path="users" element={<Users />} />
               <Route path="account" element={<Account />} />
+=======
+            <Route path="" element={<AppLayout />}>
+              <Route index element={<Navigate replace={true} to="/dashboard" />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/bookings" element={<Bookings />} >
+                <Route path=":bookingId" element={<Booking />} />
+              </Route>
+              <Route path="/create-booking" element={<CreateBooking />} />
+              <Route path="/check-in/:bookingId" element={<Checkin />} />
+              <Route path="/cabins" element={<Cabins />} />
+              <Route path="/users" element={<Users />} />
+              <Route path="/account" element={<Account />} />
+>>>>>>> c17029f84286b9f07a7f696bbe6b6cf2cd200eb1
             </Route>
             <Route path="login" element={<Login />} />
             <Route path="*" element={<PageNotFound />} />
