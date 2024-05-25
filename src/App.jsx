@@ -34,7 +34,6 @@ function App() {
         <GlobalStyle />
         <BrowserRouter>
           <Routes>
-            <Route path="login" element={<Login />} />
             <Route
               element={
                 <ProtectedRoute>
@@ -52,8 +51,9 @@ function App() {
               <Route path="cabins" element={<Cabins />} />
               <Route path="users" element={<Users />} />
               <Route path="account" element={<Account />} />
-              <Route path="*" element={<PageNotFound />} />
             </Route>
+            <Route path="login" element={<Login />} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
         <NotificationToast />
