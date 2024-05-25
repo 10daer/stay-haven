@@ -27,7 +27,6 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    {console.log(window.location.href)}
     <GlobalProvider>
       <QueryClientProvider client={queryClient}>
         {import.meta.env.DEV ? (
@@ -35,6 +34,7 @@ function App() {
         ) : (
           ""
         )}
+        {console.log(window.location.href)}
         <GlobalStyle />
         <BrowserRouter>
           {console.log(window.location.href)}
