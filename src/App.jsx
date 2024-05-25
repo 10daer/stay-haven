@@ -37,9 +37,7 @@ function App() {
         <GlobalStyle />
         <BrowserRouter>
           <Routes>
-            {console.log(Routes)}
             <Route path="/" element={<AppLayout />}>
-              {console.log(Route)}
               <Route index element={<Navigate replace to="dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="settings" element={<Settings />} />
