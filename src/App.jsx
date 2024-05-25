@@ -26,7 +26,7 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-  console.log(window.href)
+  console.log(window.location.href)
   return (
     <GlobalProvider>
       <QueryClientProvider client={queryClient}>
