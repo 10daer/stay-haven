@@ -1,5 +1,8 @@
 import { createContext, useEffect } from "react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
+import GlobalType from "../utils/GlobalType";
+
+GlobalProvider.propTypes = GlobalType;
 
 const GlobalContext = createContext();
 

@@ -7,6 +7,9 @@ import {
 import { formatCurrency } from "../../utils/helpers";
 
 import Stat from "./Stat";
+import GlobalTypes from "../../utils/GlobalType";
+
+Stats.propTypes = GlobalTypes;
 
 function Stats({
   bookings,

@@ -59,7 +59,8 @@ export const StyledSelect = styled(Select)`
   }
 
   .react-select__option {
-    background-color: var(--color-grey-200) !important;
+    background-color: var(--color-grey-50) !important;
+    color: var(--color-grey-900);
     padding: 0rem;
     padding-left: 1rem;
     border-bottom: 1px solid var(--color-grey-400);

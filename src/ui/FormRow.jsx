@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { devices } from "../styles/MediaQueries";
+import GlobalTypes from "../utils/GlobalType";
 
 const StyledFormRow = styled.div`
   display: grid;
@@ -78,12 +79,15 @@ const Error = styled.span`
   color: var(--color-red-700);
 `;
 
+FormRow.propTypes = GlobalTypes;
+
+
 function FormRow({ type, children, as, label, name, error }) {
   return (
     <StyledFormRow label={label} type={type} as={as}>
       <Label htmlFor={name}>{label}</Label>
       {children}
-      {error && <Error as={as}>{error}</Error>}
+      {error && <Error as={as}>{error.message}</Error>}
     </StyledFormRow>
   );
 }

@@ -11,7 +11,6 @@ export default function () {
   const { data: stays = [], isLoading: isFetchingStays } = useQuery({
     queryKey: ["stays", `last-${numDays}`],
     queryFn: () => getStaysAfterDate(startDate),
-    placeholderData: (previousData, previousQuery) => previousData,
   });
 
   return { stays, isFetchingStays, numDays };

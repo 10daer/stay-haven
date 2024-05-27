@@ -40,7 +40,7 @@ function BookingDetail() {
 
   if (isLoading) return <Spinner />;
 
-  if (error) return <Empty resource="booking" />;
+  if (error || !booking) return <Empty resource="booking" />;
 
   return (
     <>

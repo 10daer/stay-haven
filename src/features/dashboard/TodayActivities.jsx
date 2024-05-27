@@ -9,6 +9,7 @@ import { devices } from "../../styles/MediaQueries";
 import useStopLoading from "../../hooks/useStopLoading";
 import Button from "../../ui/Button";
 import { Link } from "react-router-dom";
+import GlobalTypes from "../../utils/GlobalType";
 
 const StyledToday = styled.div`
   /* Box */
@@ -54,6 +55,8 @@ const NoActivity = styled.p`
 const NoActivityScreen = () => (
   <NoActivity>No activity reported today</NoActivity>
 );
+
+Activities.propTypes = GlobalTypes;
 
 function TodayActivities() {
   const { todayActivities, isFetchingActivities } = useActivities();

@@ -4,6 +4,7 @@ import { HiEllipsisVertical } from "react-icons/hi2";
 import styled from "styled-components";
 import useClickOutside from "../hooks/useClickOutside";
 import { SpinnerMini } from "./Spinner";
+import GlobalTypes from "../utils/GlobalType";
 
 const StyledMenu = styled.div`
   display: flex;
@@ -71,6 +72,12 @@ const StyledButton = styled.button`
 `;
 
 const MenusContext = createContext();
+
+Menus.propTypes = GlobalTypes;
+Menu.propTypes = GlobalTypes;
+Toggle.propTypes = GlobalTypes;
+List.propTypes = GlobalTypes;
+Button.propTypes = GlobalTypes;
 
 function Menus({ children }) {
   const [rowId, setRowId] = useState("");

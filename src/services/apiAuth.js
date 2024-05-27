@@ -6,7 +6,9 @@ export async function loginAuth({ email, password }) {
     password,
   });
 
-  if (error) throw new Error("Incorrect password or email provided");
+  // if (error) throw new Error("Incorrect password or email provided");
+
+  if (error) throw new Error("Unable to verify email and password");
 
   return data?.user;
 }
@@ -18,7 +20,9 @@ export async function signupAuth({ email, password, name }) {
     options: { data: { fullName: name, avatar: "" } },
   });
 
-  if (error) throw new Error("Incorrect email or password provided");
+  // if (error) throw new Error("Incorrect email or password provided");
+
+  if (error) throw new Error("Unable to sign up a new user");
 
   return data;
 }

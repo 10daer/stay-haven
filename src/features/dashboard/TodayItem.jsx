@@ -6,6 +6,7 @@ import CheckoutButton from "./CheckoutButton";
 import Tag from "../../ui/Tag";
 import Button from "../../ui/Button";
 import { Flag } from "../../ui/Flag";
+import GlobalTypes from "../../utils/GlobalType";
 
 const StyledTodayItem = styled.li`
   display: grid;
@@ -25,6 +26,8 @@ const StyledTodayItem = styled.li`
 const Guest = styled.div`
   font-weight: 500;
 `;
+
+TodayItem.propTypes = GlobalTypes;
 
 function TodayItem({ activity }) {
   const { id, guests, numNights, status } = activity;

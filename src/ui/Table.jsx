@@ -2,6 +2,7 @@ import { createContext, useContext } from "react";
 import { CgChevronDown, CgChevronUp } from "react-icons/cg";
 import { useSearchParams } from "react-router-dom";
 import styled, { css } from "styled-components";
+import GlobalTypes from "../utils/GlobalType";
 
 const StyledTable = styled.table`
   border: 1px solid var(--color-grey-200);
@@ -115,6 +116,13 @@ const StyledSort = styled.div`
 `;
 
 const TableContext = createContext();
+
+Table.propTypes = GlobalTypes;
+Header.propTypes = GlobalTypes;
+HeaderCell.propTypes = GlobalTypes;
+Footer.propTypes = GlobalTypes;
+Body.propTypes = GlobalTypes;
+Row.propTypes = GlobalTypes;
 
 function Table({ children, columns, type }) {
   return (

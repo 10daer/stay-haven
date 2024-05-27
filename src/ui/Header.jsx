@@ -20,16 +20,16 @@ const StyledHeader = styled.header`
 `;
 
 function Header() {
-  // const {
-  //   user: {
-  //     user_metadata: { avatar, fullName },
-  //   },
-  // } = useUser();
+  const {
+    user: {
+      user_metadata: { avatar, fullName },
+    },
+  } = useUser();
 
   return (
     <StyledHeader>
-      {/* <UserAvatar avatar={avatar} user={fullName} /> */}
-      <UserAvatar avatar="" user="" />
+      <UserAvatar avatar={avatar} user={fullName} />
+      {/* <UserAvatar avatar="" user="" /> */}
       <HeaderMenu />
     </StyledHeader>
   );

@@ -2,6 +2,7 @@ import { cloneElement, createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
+import GlobalTypes from "../utils/GlobalType";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -53,6 +54,10 @@ const Button = styled.button`
     color: var(--color-grey-500);
   }
 `;
+
+Modal.propTypes = GlobalTypes;
+Open.propTypes = GlobalTypes;
+Window.propTypes = GlobalTypes;
 
 // We are using Compound Components For lexibility and reusablity
 // We use the ContetAPI to manage our state(prevents prop drilling)

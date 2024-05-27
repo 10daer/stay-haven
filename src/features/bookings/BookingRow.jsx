@@ -18,6 +18,7 @@ import useCheckOut from "../../hooks/Bookings/useCheckOut";
 
 import { format, isToday } from "date-fns";
 import { formatCurrency, formatDistanceFromNow } from "../../utils/helpers";
+import GlobalTypes from "../../utils/GlobalType";
 
 const Cabin = styled.td`
   font-size: 1.6rem;
@@ -56,14 +57,14 @@ const Index = styled.td`
   font-size: 1.8rem;
 `;
 
+BookingRow.propTypes = GlobalTypes;
+
 function BookingRow({
   booking: {
     id: bookingId,
-    created_at,
     startDate,
     endDate,
     numNights,
-    numGuests,
     totalPrice,
     status,
     guests: { fullName: guestName, email },

@@ -8,6 +8,9 @@ import FileInput from "../../ui/FileInput";
 import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import Textarea from "../../ui/Textarea";
+import GlobalTypes from "../../utils/GlobalType";
+
+CreateCabinForm.propTypes = GlobalTypes;
 
 function CreateCabinForm({ cabinData = {}, onClose }) {
   const { isEditing, editCabin } = useEditCabin();
@@ -45,7 +48,7 @@ function CreateCabinForm({ cabinData = {}, onClose }) {
       onSubmit={handleSubmit(onSubmit)}
       type={onClose ? "modal" : "regular"}
     >
-      <FormRow name="name" label="Cabin name" error={errors?.name?.message}>
+      <FormRow name="name" label="Cabin name" error={errors?.name}>
         <Input
           type="text"
           disabled={isChanging}
@@ -57,7 +60,7 @@ function CreateCabinForm({ cabinData = {}, onClose }) {
       <FormRow
         name="maxCapacity"
         label="Maximum capacity"
-        error={errors?.maxCapacity?.message}
+        error={errors?.maxCapacity}
       >
         <Input
           type="number"
@@ -76,7 +79,7 @@ function CreateCabinForm({ cabinData = {}, onClose }) {
       <FormRow
         name="regularPrice"
         label="Regular price"
-        error={errors?.regularPrice?.message}
+        error={errors?.regularPrice}
       >
         <Input
           type="number"
@@ -92,11 +95,7 @@ function CreateCabinForm({ cabinData = {}, onClose }) {
         />
       </FormRow>
 
-      <FormRow
-        name="discount"
-        label="Discount"
-        error={errors?.discount?.message}
-      >
+      <FormRow name="discount" label="Discount" error={errors?.discount}>
         <Input
           type="number"
           id="discount"
@@ -114,7 +113,7 @@ function CreateCabinForm({ cabinData = {}, onClose }) {
       <FormRow
         name="description"
         label="Description for website"
-        error={errors?.description?.message}
+        error={errors?.description}
       >
         <Textarea
           type="number"
@@ -127,7 +126,7 @@ function CreateCabinForm({ cabinData = {}, onClose }) {
         />{" "}
       </FormRow>
 
-      <FormRow name="image" label="Cabin photo" error={errors?.image?.message}>
+      <FormRow name="image" label="Cabin photo" error={errors?.image}>
         <FileInput
           id="image"
           accept="image/*"

@@ -11,7 +11,7 @@ import FormRowVertical, {
   StyledInput,
 } from "../../ui/FormRowVertical";
 
-const StyledContainer = styled.div`
+const StyledBtnContainer = styled.div`
   padding: 0rem 1.2rem;
   width: 100%;
   display: flex;
@@ -20,11 +20,12 @@ const StyledContainer = styled.div`
   margin-top: 1rem;
 
   button {
-    width: -webkit-fill-available;
-    font-size: 1.8rem;
-    font-weight: 600;
-    padding: 0.8rem 1rem;
-    align-items: center;
+    width: -webkit-fill-available !important;
+    font-size: 2rem !important;
+    font-weight: 500 !important;
+    padding: 0.4rem 0.8rem !important;
+    align-items: center imo !important;
+    border-radius: var(--border-radius-md);
   }
 `;
 
@@ -52,7 +53,7 @@ function LoginForm() {
 
   return (
     <Form type="auth" onSubmit={handleSubmit(onSubmit)}>
-      <FormRowVertical label="Email" error={errors?.email?.message}>
+      <FormRowVertical label="Email" error={errors?.email}>
         <>
           <StyledInput
             type="email"
@@ -68,34 +69,32 @@ function LoginForm() {
         </>
       </FormRowVertical>
 
-      <FormRowVertical label="Password" error={errors?.password?.message}>
-        <>
-          <StyledInput
-            type={showPassword ? "text" : "password"}
-            id="password"
-            title="Minimum of 8 characters"
-            placeholder="Your-Password"
-            autoComplete="current-password"
-            {...register("password", {
-              required: "The password field is required",
-              minLength: {
-                value: 8,
-                message: "Password must be more than 8 characters",
-              },
-            })}
-          />
-          <StyledImage
-            alt="password-Icon"
-            imgType="password"
-            src={showPassword ? "/eye-off.svg" : "/eye.svg"}
-            onClick={() =>
-              getValues().password && setShowPassword((show) => !show)
-            }
-          />
-        </>
+      <FormRowVertical label="Password" error={errors?.password}>
+        <StyledInput
+          type={showPassword ? "text" : "password"}
+          id="password"
+          title="Minimum of 8 characters"
+          placeholder="Your-Password"
+          autoComplete="current-password"
+          {...register("password", {
+            required: "The password field is required",
+            minLength: {
+              value: 8,
+              message: "Password must be more than 8 characters",
+            },
+          })}
+        />
+        <StyledImage
+          alt="password-Icon"
+          imgType="password"
+          src={showPassword ? "/eye-off.svg" : "/eye.svg"}
+          onClick={() =>
+            getValues().password && setShowPassword((show) => !show)
+          }
+        />
       </FormRowVertical>
 
-      <StyledContainer>
+      <StyledBtnContainer>
         <Button
           size="large"
           type="submit"
@@ -110,7 +109,7 @@ function LoginForm() {
         >
           Google
         </Button>
-      </StyledContainer>
+      </StyledBtnContainer>
     </Form>
   );
 }

@@ -11,6 +11,7 @@ import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 
 import { formatCurrency } from "../../utils/helpers";
+import GlobalTypes from "../../utils/GlobalType";
 
 const Img = styled.img`
   display: block;
@@ -39,6 +40,8 @@ const Discount = styled.td`
   font-weight: 500;
   color: var(--color-green-700);
 `;
+
+CabinRow.propTypes = GlobalTypes;
 
 function CabinRow({ cabins, cabin }) {
   const {

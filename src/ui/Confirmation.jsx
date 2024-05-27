@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Button from "./Button";
 import Heading from "./Heading";
+import GlobalTypes from "../utils/GlobalType";
 
 const StyledConfirmation = styled.div`
   width: 40rem;
@@ -19,6 +20,8 @@ const StyledConfirmation = styled.div`
     gap: 1.2rem;
   }
 `;
+
+Confirmation.propTypes = GlobalTypes;
 
 function Confirmation({
   resourceName,

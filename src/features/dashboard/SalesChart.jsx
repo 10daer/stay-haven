@@ -15,6 +15,7 @@ import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
 import { useGlobalContext } from "../../context/useGlobalContext";
 import { SpinnerMini } from "../../ui/Spinner";
 import useStopLoading from "../../hooks/useStopLoading";
+import GlobalTypes from "../../utils/GlobalType";
 
 const StyledSalesChart = styled(DashboardBox)`
   grid-column: 1 / -1;
@@ -30,6 +31,8 @@ export const StyledHeader = styled.span`
   justify-content: space-between;
   align-items: center;
 `;
+
+SalesChart.propTypes = GlobalTypes;
 
 function SalesChart({ sales, numDays, isFetching }) {
   const { isDarkMode } = useGlobalContext();

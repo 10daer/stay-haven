@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { devices } from "../styles/MediaQueries";
+import GlobalTypes from "../utils/GlobalType";
 
 const StyledFilter = styled.div`
   border: 1px solid var(--color-grey-100);
@@ -45,6 +46,8 @@ const FilterButton = styled.button`
     padding: 0.2rem 0.4rem;
   }
 `;
+
+FilterTable.propTypes = GlobalTypes;
 
 function FilterTable({ filterField, options }) {
   const [searchParams, setSearchParams] = useSearchParams();

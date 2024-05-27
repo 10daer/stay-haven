@@ -9,6 +9,9 @@ import Input from "./Input";
 import Button from "./Button";
 import Heading from "./Heading";
 import { StyledSelect } from "./Select";
+import GlobalTypes from "../utils/GlobalType";
+
+AddGuests.propTypes = GlobalTypes;
 
 function AddGuests({ onClose }) {
   const {
@@ -22,13 +25,13 @@ function AddGuests({ onClose }) {
   const { isCreating, createGuest } = useCreateGuest();
 
   function onsubmit(data) {
-    const { name, email, nationalId } = data;
+    const { name: fullName, email, nationalId: nationalID } = data;
     const nationality = data.nationality.value;
-    const flag = nations.filter(
+    const countryFlag = nations.filter(
       (nation) => nation.nationality === nationality
     )[0].flag;
     createGuest(
-      { name, email, nationality, nationalId, flag },
+      { fullName, email, nationality, nationalID, countryFlag },
       {
         onSettled: () => {
           reset();
@@ -47,7 +50,7 @@ function AddGuests({ onClose }) {
           type="modal"
           name="name"
           label="Guest's Fullname"
-          error={errors?.name?.message}
+          error={errors?.name}
         >
           <Input
             type="text"
@@ -63,7 +66,7 @@ function AddGuests({ onClose }) {
           type="modal"
           name="email"
           label="Guest's Email Address"
-          error={errors?.email?.message}
+          error={errors?.email}
         >
           <Input
             type="email"
@@ -84,7 +87,7 @@ function AddGuests({ onClose }) {
           type="modal"
           name="nationality"
           label="Guest's Nationality"
-          error={errors?.nationality?.message}
+          error={errors?.nationality}
         >
           <Controller
             name="nationality"
@@ -114,14 +117,23 @@ function AddGuests({ onClose }) {
           type="modal"
           name="nationalId"
           label="Guest's NationalId"
-          error={errors?.nationalId?.message}
+          error={errors?.nationalId}
         >
           <Input
             type="number"
             disabled={isCreating}
             id="nationalId"
+            maxLength={8}
             {...register("nationalId", {
               required: "The ID field is required",
+              maxLength: {
+                value: 10,
+                message: "NationalId can't be more than 10 characters",
+              },
+              minLength: {
+                value: 10,
+                message: "NationalId can't be less than 10 characters",
+              },
             })}
           />
         </FormRow>

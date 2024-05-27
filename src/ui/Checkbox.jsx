@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import GlobalTypes from "../utils/GlobalType";
 
 const StyledCheckbox = styled.div`
   display: flex;
@@ -25,6 +26,8 @@ const StyledCheckbox = styled.div`
     gap: 0.8rem;
   }
 `;
+
+Checkbox.propTypes = GlobalTypes;
 
 function Checkbox({ checked, onChange, disabled = false, id, children }) {
   return (

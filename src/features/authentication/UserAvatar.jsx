@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import GlobalType from "../../utils/GlobalType";
+
+UserAvatar.propTypes = GlobalType;
 
 const StyledUserAvatar = styled.div`
   display: flex;

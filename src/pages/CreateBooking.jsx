@@ -1,8 +1,8 @@
-import { differenceInDays, formatISO } from "date-fns";
+import { addDays, differenceInDays, formatISO } from "date-fns";
 import { useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import styled from "styled-components";
 import { HiUserPlus } from "react-icons/hi2";
+import styled from "styled-components";
 
 import { useCreateBooking } from "../hooks/Bookings/useBookings";
 import { UseCabins } from "../hooks/Cabins/useCabin";
@@ -11,18 +11,18 @@ import { UseSetting } from "../hooks/Settings/useSetting";
 import useStopLoading from "../hooks/useStopLoading";
 import { formatCurrency } from "../utils/helpers";
 
+import AddGuests from "../ui/AddGuests";
+import Button from "../ui/Button";
 import ButtonIcon from "../ui/ButtonIcon";
 import Checkbox from "../ui/Checkbox";
 import Form from "../ui/Form";
 import FormRow from "../ui/FormRow";
+import Heading from "../ui/Heading";
 import Input from "../ui/Input";
+import Modal from "../ui/Modal";
+import { StyledSelect } from "../ui/Select";
 import { SpinnerMini } from "../ui/Spinner";
 import Textarea from "../ui/Textarea";
-import Heading from "../ui/Heading";
-import Modal from "../ui/Modal";
-import AddGuests from "../ui/AddGuests";
-import Button from "../ui/Button";
-import { StyledSelect } from "../ui/Select";
 
 const Box = styled.div`
   background-color: var(--color-grey-0);
@@ -66,6 +66,9 @@ function CreateBooking() {
   const { isCreating, createBooking } = useCreateBooking();
   const isLoadingCabins = useStopLoading(isLoading1);
   const isLoadingGuests = useStopLoading(isLoading2);
+  const [endDateVar, setEndDateVar] = useState(
+    addDays(new Date(Date.now()), 1)
+  );
 
   let newBooking = useRef({}).current;
 
@@ -153,11 +156,12 @@ function CreateBooking() {
               <SpinnerMini />
             ) : (
               !cabins.length && "Unable to fetch cabins"
-            )) || errors?.cabinName?.message
+            )) || errors?.cabinName
           }
         >
           <select
             id="cabinName"
+            value={newBooking.cabinName}
             disabled={isLoadingCabins && !cabins.length}
             {...register("cabinName", {
               required: "You are required to select a cabin",
@@ -203,7 +207,7 @@ function CreateBooking() {
               <SpinnerMini />
             ) : (
               !guests.length && "Unable to fetch Guests"
-            )) || errors?.guestsName?.message
+            )) || errors?.guestsName
           }
         >
           <StyledContainer>
@@ -247,11 +251,7 @@ function CreateBooking() {
             </Modal>
           </StyledContainer>
         </FormRow>
-        <FormRow
-          name="start-date"
-          label="Start date"
-          error={errors?.startDate?.message}
-        >
+        <FormRow name="start-date" label="Start date" error={errors?.startDate}>
           <Input
             min={formatISO(Date.now(), { representation: "date" })}
             max="2050-12-31"
@@ -262,6 +262,7 @@ function CreateBooking() {
               required: "The booking start date is required",
               onBlur: () => {
                 newBooking.startDate = getValues().startDate;
+                setEndDateVar(addDays(new Date(getValues().startDate), 1));
               },
               validate: (value) =>
                 value !== getValues().endDate ||
@@ -269,13 +270,11 @@ function CreateBooking() {
             })}
           />
         </FormRow>
-        <FormRow
-          name="end-date"
-          label="End date"
-          error={errors?.endDate?.message}
-        >
+        <FormRow name="end-date" label="End date" error={errors?.endDate}>
           <Input
-            min={formatISO(Date.now(), { representation: "date" })}
+            min={formatISO(endDateVar, {
+              representation: "date",
+            })}
             max="2050-12-31"
             type="date"
             disabled=""
@@ -296,6 +295,7 @@ function CreateBooking() {
             type="number"
             id="description"
             defaultValue=""
+            placeholder="If you have no description input 'Nil'"
             disabled=""
             {...register("observation", {
               onBlur: () => {
@@ -318,7 +318,7 @@ function CreateBooking() {
           <Checkbox
             checked={hasPaid}
             id="hasPaid"
-            disabled={false}
+            disabled={Object.keys(newBooking).length < 6}
             onChange={() => setHasPaid((hasPaid) => !hasPaid)}
           >
             I confirm that {newBooking.guestsName?.at(0)} have paid a total
@@ -329,15 +329,22 @@ function CreateBooking() {
           </Checkbox>
         </Box>
         {/* comment with all the details filled */}
-        <Box>
-          Booking Summary: {newBooking.guestsName?.at(0)} have chosen to stay at
-          Cabin-{newBooking.cabinName} for {newBooking.numNights} nights with
-          {newBooking.numGuests} guests.
-          {addBreakfast &&
-            " They also would be having breakfast through out their stay."}{" "}
-          The total price for their stay is{" "}
-          {formatCurrency(newBooking.extrasPrice + newBooking.cabinPrice)}.
-        </Box>
+        {hasPaid && Object.keys(newBooking).length > 5 && (
+          <Box>
+            Booking Summary: {newBooking.guestsName?.at(0)} have chosen to stay
+            at Cabin-{newBooking.cabin.name} for {newBooking.numNights}{" "}
+            {+newBooking.numNights === 1 ? "night" : "nights"} with{" "}
+            {newBooking.numGuests}{" "}
+            {+newBooking.numGuests === 1 ? "guest" : "guests"}.
+            {addBreakfast &&
+              " They also would be having breakfast through out their stay."}{" "}
+            The total price for their stay is{" "}
+            {formatCurrency(newBooking.extrasPrice + newBooking.cabinPrice)} (
+            {formatCurrency(newBooking.cabinPrice)}
+            {" + "}
+            {formatCurrency(newBooking.extrasPrice)}).
+          </Box>
+        )}
         <ButtonsContainer>
           <Button
             variation="secondary"

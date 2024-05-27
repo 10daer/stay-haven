@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { devices } from "../styles/MediaQueries";
 import { SpinnerMini } from "./Spinner";
+import GlobalTypes from "../utils/GlobalType";
 
 const sizes = {
   small: css`
@@ -85,6 +86,8 @@ StyledButton.defaultProps = {
   variation: "primary",
   size: "medium",
 };
+
+Button.propTypes = GlobalTypes;
 
 function Button({
   variation,

@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import GlobalTypes from "../utils/GlobalType";
 
 export const StyledInput = styled.input`
   height: 4.8rem;
@@ -89,12 +90,14 @@ const StyledFormRow = styled.div`
   }
 `;
 
+FormRowVertical.propTypes = GlobalTypes;
+
 function FormRowVertical({ children, label, error }) {
   return (
     <StyledFormRow>
       {children}
       <StyledLabel htmlFor={label}>{label}</StyledLabel>
-      <p>{error ? ` ❌ ${error}` : ""}</p>
+      <p>{error ? ` ❌ ${error.message}` : ""}</p>
     </StyledFormRow>
   );
 }

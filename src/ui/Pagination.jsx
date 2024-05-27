@@ -2,6 +2,7 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { DOC_PER_PAGE } from "../utils/constants";
+import GlobalTypes from "../utils/GlobalType";
 
 const StyledPagination = styled.div`
   width: 100%;
@@ -58,6 +59,8 @@ const PaginationButton = styled.button`
     color: var(--color-brand-50);
   }
 `;
+
+Pagination.propTypes = GlobalTypes;
 
 function Pagination({ count }) {
   const [searchParams, setSearchParams] = useSearchParams();

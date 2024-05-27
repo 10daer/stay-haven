@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { SpinnerMini } from "../../ui/Spinner";
-import { useEffect, useRef, useState } from "react";
 import useStopLoading from "../../hooks/useStopLoading";
+import GlobalTypes from "../../utils/GlobalType";
 
 const StyledStat = styled.div`
   /* Box */
@@ -49,6 +49,8 @@ const Value = styled.p`
   line-height: 1;
   font-weight: 500;
 `;
+
+Stat.propTypes = GlobalTypes;
 
 function Stat({ icon, title, loading: isFetching, value, color }) {
   const loading = useStopLoading(isFetching);

@@ -6,6 +6,7 @@ import { useUser } from "../hooks/Authentication/useUser";
 import Spinner from "./Spinner";
 import toast from "react-hot-toast";
 import { useGlobalContext } from "../context/useGlobalContext";
+import GlobalTypes from "../utils/GlobalType";
 
 const FullPage = styled.div`
   height: 100vh;
@@ -13,6 +14,8 @@ const FullPage = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+ProtectedRoute.propTypes = GlobalTypes;
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();

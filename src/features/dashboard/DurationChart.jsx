@@ -15,6 +15,7 @@ import { devices } from "../../styles/MediaQueries";
 import Spinner from "../../ui/Spinner";
 import useStopLoading from "../../hooks/useStopLoading";
 import { StyledHeader } from "./SalesChart";
+import GlobalTypes from "../../utils/GlobalType";
 
 const ChartBox = styled.div`
   /* Box */
@@ -49,6 +50,8 @@ const SpinnerContainer = styled.div`
     display: block;
   }
 `;
+
+DurationChart.propTypes = GlobalTypes;
 
 function createData(isDarkmode, secondArg) {
   let startData = [

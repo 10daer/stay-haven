@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import GlobalTypes from "../utils/GlobalType";
 
 const StyledDataItem = styled.div`
   display: flex;
@@ -19,6 +20,8 @@ const Label = styled.span`
     color: var(--color-brand-600);
   }
 `;
+
+DataItem.propTypes = GlobalTypes;
 
 function DataItem({ icon, label, children }) {
   return (

@@ -34,7 +34,6 @@ function UpdateSettingsForm() {
       maxBookingLength,
       maxGuestsPerBooking,
     } = {},
-    error,
   } = UseSetting();
   const { isUpdating, updateSettingFn } = UseUpdateSettingValue();
 
