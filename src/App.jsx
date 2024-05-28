@@ -18,8 +18,8 @@ import Users from "./pages/Users";
 import NotificationToast from "./features/Notification/NotificationToast";
 
 import CreateBooking from "./pages/CreateBooking";
-import AppLayout from "./ui/AppLayout";
 import GlobalStyle from "./styles/GlobalStyles";
+import AppLayout from "./ui/AppLayout";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 60 * 1000 } },
@@ -37,7 +37,7 @@ function App() {
         <GlobalStyle />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<AppLayout />}>
+            <Route exact path="/" element={<AppLayout />}>
               <Route
                 index
                 element={<Navigate replace={true} to="/dashboard" />}

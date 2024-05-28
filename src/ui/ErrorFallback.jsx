@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import GlobalStyle from "../styles/GlobalStyles";
 import Box from "../ui/Box";
-import Heading from "./Heading";
-import Button from "./Button";
 import GlobalTypes from "../utils/GlobalType";
+import Button from "./Button";
+import Heading from "./Heading";
 
 const StyledErrorFallback = styled.main`
   height: 100vh;
