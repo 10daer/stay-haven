@@ -3,7 +3,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import { GlobalProvider } from "./context/GlobalContext";
-import GlobalStyle from "./styles/GlobalStyles";
 
 import Account from "./pages/Account";
 import Booking from "./pages/Booking";
@@ -20,6 +19,7 @@ import NotificationToast from "./features/Notification/NotificationToast";
 
 import CreateBooking from "./pages/CreateBooking";
 import AppLayout from "./ui/AppLayout";
+import GlobalStyle from "./styles/GlobalStyles";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 60 * 1000 } },
@@ -37,7 +37,7 @@ function App() {
         <GlobalStyle />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<AppLayout />}>
+            {/* <Route path="/" element={<AppLayout />}>
               <Route
                 index
                 element={<Navigate replace={true} to="/dashboard" />}
@@ -54,7 +54,24 @@ function App() {
               <Route path="account" element={<Account />} />
             </Route>
             <Route path="login" element={<Login />} />
-            <Route path="*" element={<PageNotFound />} />
+            <Route path="*" element={<PageNotFound />} /> */}
+            <Route path="/" element={<AppLayout />}>
+              <Route
+                index
+                element={<Navigate replace={true} to="/dashboard" />}
+              />
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="bookings" element={<Bookings />} />
+              <Route path="bookings/:bookingId" element={<Booking />} />
+              <Route path="create-booking" element={<CreateBooking />} />
+              <Route path="check-in/:bookingId" element={<Checkin />} />
+              <Route path="cabins" element={<Cabins />} />
+              <Route path="users" element={<Users />} />
+              <Route path="account" element={<Account />} />
+            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
         <NotificationToast />
