@@ -30,7 +30,7 @@ const Container = styled.div`
   max-width: 120rem;
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
+  gap: 1.2rem;
 `;
 
 function AppLayout() {

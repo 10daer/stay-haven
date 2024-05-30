@@ -21,6 +21,15 @@ const sizes = {
     padding: 1.2rem 2.4rem;
     font-weight: 500;
   `,
+  dash: css`
+    font-size: 1.2rem;
+    padding: 0.2rem 0.2rem;
+    width: 100%;
+    align-self: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+  `,
 };
 
 const variations = {
@@ -72,14 +81,12 @@ const StyledButton = styled.button`
   gap: 8px;
 
   ${(props) => sizes[props.size]}
-  ${(props) => variations[props.variation]}
-
-  @media ${devices.md} {
+  ${(props) => variations[props.variation]} /* @media ${devices.md} {
     font-size: 1.6rem;
     padding: 0.8rem 1rem;
     font-weight: 600;
     text-align: center;
-  }
+  } */
 `;
 
 StyledButton.defaultProps = {

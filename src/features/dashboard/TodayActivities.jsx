@@ -17,10 +17,10 @@ const StyledToday = styled.div`
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
 
-  padding: 1.6rem 2rem;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
+  gap: 1.2rem;
   grid-column: 1 / span 2;
   justify-content: space-between;
 

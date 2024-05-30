@@ -29,7 +29,7 @@ function App() {
   return (
     <GlobalProvider>
       <QueryClientProvider client={queryClient}>
-        {import.meta.env.DEV ? (
+        {!import.meta.env.DEV ? (
           <ReactQueryDevtools initialIsOpen={false} />
         ) : (
           ""
