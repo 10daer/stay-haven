@@ -6,7 +6,7 @@ import { cabins } from "./data-cabins";
 import { guests } from "./data-guests";
 
 const supabaseUrl = process.env.VITE_SUPABASE_URL;
-const supabaseKey = process.env.VITE_SUPABASE_KEY;
+const supabaseKey = process.env.VITE_SUPABASE_SERVICE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const subtractDates = (dateStr1, dateStr2) =>
