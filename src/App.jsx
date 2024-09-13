@@ -26,26 +26,6 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-  useEffect(() => {
-    const checkScheduledUpload = async () => {
-      const UPLOAD_INTERVAL = 3 * 24 * 60 * 60 * 1000; // 3 days in milliseconds
-      const lastUploadTime = localStorage.getItem('lastUploadTime');
-      const currentTime = Date.now();
-
-      if (!lastUploadTime || currentTime - parseInt(lastUploadTime) >= UPLOAD_INTERVAL) {
-        const { uploadAll } = await import('./path/to/Uploader');
-        try {
-          await uploadAll();
-          console.log('Scheduled upload completed successfully');
-          localStorage.setItem('lastUploadTime', currentTime.toString());
-        } catch (error) {
-          console.error('Error during scheduled upload:', error);
-        }
-      }
-    };
-
-    checkScheduledUpload();
-  }, []);
 
   return (
     <GlobalProvider>
