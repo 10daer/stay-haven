@@ -38,7 +38,12 @@ function LoginForm() {
     reset,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      email: "test@anonymous.com",
+      password: "anonymous"
+    }
+  });
   const { login, isAuthenticating } = useLogin();
 
   function onSubmit({ email, password }) {

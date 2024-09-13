@@ -100,53 +100,40 @@ async function createBookings() {
   if (error) console.log(error.message);
 }
 
+export async function uploadAll() {
+  // Bookings need to be deleted FIRST
+  await deleteBookings();
+  await deleteGuests();
+  await deleteCabins();
+
+  // Bookings need to be created LAST
+  await createGuests();
+  await createCabins();
+  await createBookings();
+}
+
 function Uploader() {
   const [isLoading, setIsLoading] = useState(false);
 
-  async function uploadAll() {
+  async function handleUploadAll() {
     setIsLoading(true);
-    // Bookings need to be deleted FIRST
-    await deleteBookings();
-    await deleteGuests();
-    await deleteCabins();
-
-    // Bookings need to be created LAST
-    await createGuests();
-    await createCabins();
-    await createBookings();
-
-    setIsLoading(false);
-  }
-
-  async function uploadBookings() {
-    setIsLoading(true);
-    await deleteBookings();
-    await createBookings();
+    await uploadAll();
     setIsLoading(false);
   }
 
   return (
-    <div
-      style={{
-        marginTop: "auto",
-        backgroundColor: "#e0e7ff",
-        padding: "2px",
-        borderRadius: "5px",
-        textAlign: "center",
-        display: "flex",
-        flexDirection: "column",
-        gap: "2px",
-      }}
-    >
+    <div style={{
+      marginTop: "auto",
+      backgroundColor: "#e0e7ff",
+      padding: "2px",
+      borderRadius: "5px",
+      textAlign: "center",
+      display: "flex",
+      flexDirection: "column",
+      gap: "2px",
+    }}>
       <h3>SAMPLE DATA</h3>
-
-      <Button onClick={uploadAll} disabled={isLoading}>
-        Upload ALL
-      </Button>
-
-      <Button onClick={uploadBookings} disabled={isLoading}>
-        Upload bookings ONLY
-      </Button>
+      <p>Data is automatically uploaded every three days.</p>
     </div>
   );
 }
