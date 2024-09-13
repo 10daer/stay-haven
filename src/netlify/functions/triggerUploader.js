@@ -1,4 +1,4 @@
-import { isFuture, isPast, isToday } from "date-fns";
+import { isFuture, isPast, isToday, differenceInDays } from "date-fns";
 import { createClient } from "@supabase/supabase-js";
 
 import { bookings } from "./data-bookings";
@@ -9,7 +9,7 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-export const subtractDates = (dateStr1, dateStr2) =>
+const subtractDates = (dateStr1, dateStr2) =>
     differenceInDays(parseISO(String(dateStr1)), parseISO(String(dateStr2)));
 
 async function deleteGuests() {
@@ -97,7 +97,7 @@ async function createBookings() {
   if (error) console.log(error.message);
 }
 
-export async function uploadAll() {
+async function uploadAll() {
   // Bookings need to be deleted FIRST
   await deleteBookings();
   await deleteGuests();
@@ -108,6 +108,7 @@ export async function uploadAll() {
   await createCabins();
   await createBookings();
 }
+
 exports.handler = async function(event, context) {
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
