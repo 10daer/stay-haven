@@ -1,4 +1,4 @@
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseUrl = process.env.VITE_SUPABASE_URL;
 
 const imageUrl = `${supabaseUrl}/storage/v1/object/public/cabin-images/`;
 
