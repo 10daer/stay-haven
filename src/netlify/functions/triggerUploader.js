@@ -110,7 +110,7 @@ async function uploadAll() {
 }
 
 exports.handler = async function(event, context) {
-  if (event.httpMethod !== "POST") {
+  if (event.httpMethod !== "GET") {
       console.log(event,context)
     return { statusCode: 405, body: "Method Not Allowed" };
   }
