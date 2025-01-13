@@ -48,7 +48,7 @@ function LoginForm() {
 
   function onSubmit({ email, password }) {
     setSignInMode("password");
-    login({ email, password }, { onSettled: reset });
+    login({ email, password }, { onSettled: () => reset() });
   }
 
   function googleSignIn(e) {
